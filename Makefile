@@ -1,11 +1,11 @@
 NAME = fdf
 
-CFLAGS = -Wall -Wextra -Wall
+FLAGS = -Wall -Wextra -Wall
 
-I = -I fdf.h -I libft/libft.h -I minilibx_macos/mlx.h
-L = -L libft/ -lft -L minilibx_macos/ -lmlx
+INCLUDES = -I fdf.h -I libft/libft.h -I minilibx_macos/mlx.h
+LIBRARY = -L libft/ -lft -L minilibx_macos/ -lmlx
 
-
+FRAMEWORKS = -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
