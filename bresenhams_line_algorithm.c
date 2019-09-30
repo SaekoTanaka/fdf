@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bresenhams_line_algorithm.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/29 14:38:51 by stanaka           #+#    #+#             */
+/*   Updated: 2019/09/29 18:10:22 by stanaka          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+int     compare_y(double s_y, double l_y)
+{
+    double  av_y;
+    int     small_y;
+    int     large_y;
+
+    av_y = (s_y + l_y) / 2;
+    small_y = (int)av_y;
+    large_y = (int)av_y + 1;
+    if (av_y - small_y < large_y - av_y)
+        return (small_y);
+    else
+        return (large_y);
+}
+
+int     get_y(t_xy *xy, int c_x)
+{
+    int     y;
+    double  s_y;
+    double  l_y;
+
+    s_y = xy->t * (c_x - xy->x0) + xy->y0;
+    l_y = s_y + xy->t;
+    y = compare_y(s_y, l_y);
+    return (y);
+}
+
+t_xy    *init_xy(void)
+{
+    t_xy    *xy;
+
+    xy = malloc(sizeof(t_xy));
+    xy->t = 0;
+    xy->x0 = 100;
+    xy->x1 = 200;
+    xy->y0 = 200;
+    xy->y1 = 400;
+    return (xy);
+}
+
+void    draw_line(t_xy  *xy, void *mlx_ptr, void *win_ptr)
+{
+    int s_x;
+    int t_x;
+    int c_x;
+    int c_y;
+
+    s_x = (int)xy->x0;
+    t_x = (int)xy->x1;
+    if (xy->x0 - xy->x1 != 0)
+        xy->t = (xy->y0 - xy->y1)/(xy->x0 - xy->x1);
+    c_x = s_x;
+    while (c_x < t_x)
+    {
+        c_y = get_y(xy, c_x);
+        mlx_pixel_put(mlx_ptr, win_ptr, c_x, c_y, 0xFFFFFFF);
+       // printf("(%d,%d)\n", c_x, c_y);
+        c_x++;
+    }
+}
