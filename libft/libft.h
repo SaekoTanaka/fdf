@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stanaka <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 12:51:34 by stanaka           #+#    #+#             */
-/*   Updated: 2019/03/21 18:25:06 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/22 17:39:08 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+
+# define BUFF_SIZE 32
+
 
 typedef	struct		s_list
 {
@@ -86,5 +93,9 @@ size_t				ft_count_words(char const *s, char c);
 size_t				ft_count_letters(char const *s, char c, size_t j);
 size_t				ft_count(int n);
 char				*ft_is_space(const char *s);
+
+int get_next_line (const int fd, char **line);
+int set_line(int fd, char **line, char **s);
+
 
 #endif

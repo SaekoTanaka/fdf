@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 14:38:51 by stanaka           #+#    #+#             */
-/*   Updated: 2019/09/29 18:10:22 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/21 09:49:04 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,34 @@ t_xy    *init_xy(void)
 
     xy = malloc(sizeof(t_xy));
     xy->t = 0;
-    xy->x0 = 100;
-    xy->x1 = 200;
+    xy->x0 = 100.5555;
+    xy->x1 = 100.5555;
     xy->y0 = 200;
     xy->y1 = 400;
     return (xy);
 }
 
+void    special_pixel_put(void *mlx_ptr, void *win_ptr, t_xy *xy)
+{
+    int i;
+    int y;
+
+    i = xy->y0 > xy->y1 ? xy->y0 : xy->y1;
+    // i is the large one
+    y = xy->y0 > xy->y1 ? xy->y1 : xy->y0;
+    // y is the small one
+    while (i >= y)
+    {
+        mlx_pixel_put(mlx_ptr, win_ptr, xy->x0, y, 0xFFFFFF);
+        y++;
+    }
+}
+
+
 void    draw_line(t_xy  *xy, void *mlx_ptr, void *win_ptr)
 {
-    int s_x;
-    int t_x;
+    int s_x;//start
+    int t_x;//end
     int c_x;
     int c_y;
 
@@ -63,8 +80,11 @@ void    draw_line(t_xy  *xy, void *mlx_ptr, void *win_ptr)
     t_x = (int)xy->x1;
     if (xy->x0 - xy->x1 != 0)
         xy->t = (xy->y0 - xy->y1)/(xy->x0 - xy->x1);
+    else
+        special_pixel_put(mlx_ptr, win_ptr, xy);       
     c_x = s_x;
-    while (c_x < t_x)
+    while (c_x <= t_x)//
+    // the case that c_x < t_x or c_x > t_x 
     {
         c_y = get_y(xy, c_x);
         mlx_pixel_put(mlx_ptr, win_ptr, c_x, c_y, 0xFFFFFFF);

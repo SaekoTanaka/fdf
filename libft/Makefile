@@ -45,7 +45,7 @@ ft_lstmap.c \
 
 SRC_FT_ADD = ft_count.c ft_count_words.c ft_count_letters.c ft_is_space.c \
 
-SRCS = $(SRC_FT_PUT) $(SRC_FT_STR) $(SRC_FT_IS) $(SRC_FT_MEM) $(SRC_FT_MALLOC) $(SRC_FT_F) $(SRC_FT_LST) $(SRC_FT_ADD) 
+SRCS = $(SRC_FT_PUT) $(SRC_FT_STR) $(SRC_FT_IS) $(SRC_FT_MEM) $(SRC_FT_MALLOC) $(SRC_FT_F) $(SRC_FT_LST) $(SRC_FT_ADD) get_next_line.c
 
 HEADER = -I libft.h
 
@@ -84,6 +84,7 @@ OBJECTS = ft_putchar.o ft_putchar_fd.o \
  ft_lstmap.o \
  ft_strsplit.o \
  ft_count.o ft_count_words.o ft_count_letters.o ft_is_space.o \
+ get_next_line.o \
 
 $(NAME): 
 	@gcc $(FLAGS) $(SRCS) $(HEADER)
