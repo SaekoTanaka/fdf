@@ -6,11 +6,11 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 14:38:51 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/21 09:49:04 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/25 09:02:55 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+     #include "fdf.h"
 
 int     compare_y(double s_y, double l_y)
 {
@@ -87,7 +87,7 @@ void    draw_line(t_xy  *xy, void *mlx_ptr, void *win_ptr)
     // the case that c_x < t_x or c_x > t_x 
     {
         c_y = get_y(xy, c_x);
-        mlx_pixel_put(mlx_ptr, win_ptr, c_x, c_y, 0xFFFFFFF);
+        mlx_pixel_put(mlx_ptr, win_ptr, c_x, c_y, 0xFFFFFFF);//mlx_pixel_put (int) (int)
        // printf("(%d,%d)\n", c_x, c_y);
         c_x++;
     }

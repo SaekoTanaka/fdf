@@ -7,9 +7,9 @@ LIBRARY = -L libft -lft -L fdf_minilibx_macos -lmlx
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
-SRC = main.c bresenhams_line_algorithm.c
+SRC = main.c line_algorithm.c get_image_info.c
 
-OBJ = main.o bresenhams_line_algorithm.o
+OBJ = main.o line_algorithm.o get_image_info.o
 
 all: $(NAME)
 
