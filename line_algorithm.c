@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 11:22:10 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/25 12:11:48 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/26 11:21:35 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ void	each_x_dots(t_xy xy, void *mlx_ptr, void *win_ptr)
 	t_y = s_y + xy.t;
 	if (xy.t > 0)
 	{
-		ys = (int)(xy.t * (xy.x - xy.x0) + xy.y0);
+		ys = s_y;
 		while (ys <= (int)t_y + 1)
 		{
-			mlx_pixel_put(mlx_ptr, win_ptr, ys, xy.x, 0xFFFFFF);
+			mlx_pixel_put(mlx_ptr, win_ptr, xy.x, ys, 0xFF00FF);
 			ys++;
 		}
 	}
 	else
 	{
-		ys = (int)(xy.t * (xy.x - xy.x0) + xy.y0) + 1;
+		ys = s_y + 1;
 		while ((int)t_y <= ys)
 		{
-			mlx_pixel_put(mlx_ptr, win_ptr, ys, xy.x, 0xFFFFFF);
+			mlx_pixel_put(mlx_ptr, win_ptr, xy.x, ys, 0xFFFFFF);
 			ys--;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:38:18 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/25 11:18:39 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/26 11:30:38 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@
 void	iso_calc(t_dot *dot, char *num, int i, int layer)
 {
 
-	dot->x += 20 * cos(3.149265 / 6) * i;
-	dot->y += 20 * sin(3.149265 / 6) * i;
-	dot->x -= 20 * cos(3.149265 / 6) * layer;
-	dot->y += 20 * sin(3.149265 / 6) * layer;
-	dot->y -= 40 * ft_atoi(num);
+	dot->x += 20 * cos(0.5248775) * i;
+	dot->y += 20 * sin(0.5248775) * i;
+	dot->x -= 20 * cos(0.5248775) * layer;
+	dot->y += 20 * sin(0.5248775) * layer;
+	dot->y -= 20 * ft_atoi(num);
+	//printf("(%f,%f)\n", dot->x, dot->y);
 }
 
 t_dot	*init_dot()
@@ -52,7 +53,7 @@ t_dot	*init_dot()
 	if (dot == NULL)
 		return(NULL);
 	dot->x = 100;
-	dot->y = 400;
+	dot->y = 100;
 	dot->next = NULL;
 	return (dot);
 }
