@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:54:55 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/25 10:37:35 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:12:14 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,33 @@
 //    return (0);
 //}
 
+int	deal_key(int key, void **param)
+{
+	if (key == 53)
+	{
+		mlx_destroy_window(param[0], param[1]);
+		exit(0);
+	}
+	return (0);
+}
+
 void	line(t_dot	**info, char *file)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	**param;
+	int		i;
 
+	i = 0;
+	while (info[i] != NULL)
+		i++;
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, file);
+	win_ptr = mlx_new_window(mlx_ptr, 40 * i, 40 * i, file);
+	param = malloc(sizeof(void *) * 2);
+	param[0] = mlx_ptr;
+	param[1] = win_ptr;
 	draw__line(info, mlx_ptr, win_ptr);
+	mlx_key_hook(win_ptr, deal_key, param);
 	mlx_loop(mlx_ptr);
     mlx_clear_window(mlx_ptr, win_ptr);
 }
@@ -44,7 +63,6 @@ void    draw(char *file)
 	t_dot   **info;
 
 	info = get_num_info(file); //open file twice and make linklist array
-//printf("hello\n");
 	if (info != NULL)
 		line(info, file); //use ex main
 }

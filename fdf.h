@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:55:12 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/25 10:18:51 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/28 10:14:14 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ typedef struct      s_dot
     double			x;
     double			y;
     struct s_dot    *next;
+    int             int_x;
+    int             int_y;
 }                   t_dot;
 
 void	draw__line(t_dot **info, void *mlx_ptr, void *win_ptr);

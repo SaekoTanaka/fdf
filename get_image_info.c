@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 15:38:18 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/26 11:30:38 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/29 21:14:37 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,14 @@
 //	return (dot); //dot is the last one...
 //}
 
+void	parallel_calc(t_dot *dot, char *num, int i, int layer)
+{
+	dot->x += 20 * i;
+	dot->y += 20 * sin(1.0497) * layer - 15 * ft_atoi(num) * sin(0.5248775);
 
+	dot->int_x = (int)dot->x;
+	dot->int_y = (int)dot->y;
+}
 
 void	iso_calc(t_dot *dot, char *num, int i, int layer)
 {
@@ -42,7 +49,9 @@ void	iso_calc(t_dot *dot, char *num, int i, int layer)
 	dot->x -= 20 * cos(0.5248775) * layer;
 	dot->y += 20 * sin(0.5248775) * layer;
 	dot->y -= 20 * ft_atoi(num);
-	//printf("(%f,%f)\n", dot->x, dot->y);
+
+	dot->int_x = (int)dot->x;
+	dot->int_y = (int)dot->y;
 }
 
 t_dot	*init_dot()
@@ -52,23 +61,11 @@ t_dot	*init_dot()
 	dot = malloc(sizeof(t_dot));
 	if (dot == NULL)
 		return(NULL);
-	dot->x = 100;
+	dot->x = 300;
 	dot->y = 100;
 	dot->next = NULL;
 	return (dot);
 }
-
-
-//t_dot	*change_info(char *line, int *i)
-//{
-//	char 	**split;
-//	t_dot	*new;
-//	split = ft_strsplit(line , ' ');
-//	new = make_dot_info(split, *i);
-//	*i++; //how many layers they have
-//	return (new);
-//}
-
 
 t_dot	*make_new_dot(char *num, int i, int n)
 {
@@ -76,6 +73,7 @@ t_dot	*make_new_dot(char *num, int i, int n)
 
 	dot = init_dot();
 	iso_calc(dot, num, i, n);
+	//parallel_calc(dot,num, i, n);
 	return (dot);
 }
 
