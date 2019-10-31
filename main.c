@@ -6,7 +6,7 @@
 /*   By: stanaka <stanaka@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/29 12:54:55 by stanaka           #+#    #+#             */
-/*   Updated: 2019/10/29 21:12:14 by stanaka          ###   ########.fr       */
+/*   Updated: 2019/10/31 16:16:29 by stanaka          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,9 @@ void	line(t_dot	**info, char *file)
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	**param;
-	int		i;
 
-	i = 0;
-	while (info[i] != NULL)
-		i++;
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 40 * i, 40 * i, file);
+	win_ptr = mlx_new_window(mlx_ptr, 1500, 1500, file);
 	param = malloc(sizeof(void *) * 2);
 	param[0] = mlx_ptr;
 	param[1] = win_ptr;
